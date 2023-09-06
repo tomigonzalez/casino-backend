@@ -14,6 +14,7 @@ app.use("/auth", authRouter);
 const server = app.listen(port, () => {
   createPrismaClient();
   getConfig();
+  console.log("estoy andando");
   console.log(`Example app listening on port ${port}!`);
 });
 

@@ -14,6 +14,7 @@ app.use("/auth", authRouter_1.authRouter);
 const server = app.listen(port, () => {
     (0, prismaClient_1.createPrismaClient)();
     (0, config_1.getConfig)();
+    console.log("estoy andando");
     console.log(`Example app listening on port ${port}!`);
 });
 server.keepAliveTimeout = 120 * 1000;
