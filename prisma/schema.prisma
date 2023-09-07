@@ -10,38 +10,38 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model usuario {
+model Usuario {
   id         Int        @id @default(autoincrement())
   name      String 
   email     String   @unique
   password  String 
   balance      Float
-  transactions transaction[]
-  carritosCompras carritoCompras[]   // Relación opuesta
+  transactions Transaction[]
+  carritosCompras CarritoCompras[]   // Relación opuesta
 }
 
-model transaction {
+model Transaction {
   id         Int       @id @default(autoincrement())
   date      DateTime
   amount      Float
   type       String
-  user    usuario   @relation(fields: [userId], references: [id])
+  user    Usuario   @relation(fields: [userId], references: [id])
   userId  Int
 }
 
-model carritoCompras {
+model CarritoCompras {
   id         Int       @id @default(autoincrement())
-  user    usuario   @relation(fields: [userId], references: [id])
+  user    Usuario   @relation(fields: [userId], references: [id])
   userId  Int
   dateHourBuy DateTime
-  cupones cupon[]  // Relación opuesta
+  cupones Cupon[]  // Relación opuesta
 }
 
-model cupon {
+model Cupon {
   id         Int       @id @default(autoincrement())
   code     String
   additionalBalance Float
   expirationDate DateTime
-  cartShopping carritoCompras @relation(fields: [cartId], references: [id])
+  cartShopping CarritoCompras @relation(fields: [cartId], references: [id])
   cartId  Int
 }
