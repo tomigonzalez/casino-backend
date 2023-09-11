@@ -22,12 +22,13 @@ model Usuario {
 
 model Transaction {
   id         Int       @id @default(autoincrement())
-  date      DateTime
+  date      DateTime  @default(now()) // Esto configura la fecha para generarse automáticamente
   amount      Float
   type       String
   user    Usuario   @relation(fields: [userId], references: [id])
   userId  Int
 }
+
 
 model CarritoCompras {
   id         Int       @id @default(autoincrement())
