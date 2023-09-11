@@ -21,12 +21,12 @@ model Usuario {
 }
 
 model Transaction {
-  id         Int       @id @default(autoincrement())
-  date      DateTime  @default(now()) // Esto configura la fecha para generarse automáticamente
-  amount      Float
-  type       String
-  user    Usuario   @relation(fields: [userId], references: [id])
-  userId  Int
+  id        Int       @id @default(autoincrement())
+  date      DateTime   @default(now()) // Esto configura la fecha para generarse automáticamente
+  amount    Float
+  type      String
+  user      Usuario   @relation(fields: [userId], references: [id])
+  userId    Int
 }
 
 

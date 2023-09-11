@@ -52,6 +52,8 @@ export const buyCouponController = async (req: Request, res: Response) => {
         amount: couponValue,
         type: "compra de cupón",
         userId: userId,
+        date: new Date(),
+
         // date y userts se llenarán automáticamente por Prisma
       },
     });
