@@ -1,6 +1,10 @@
 import { authMiddleware } from "./../middleware/authMiddleware";
 import { Router } from "express";
-import { buyCouponController, getBalanceController } from "./casinoControllers";
+import {
+  buyCouponController,
+  getBalanceController,
+  getUserController,
+} from "./casinoControllers";
 
 export const balanceRouter = Router();
 
@@ -12,6 +16,7 @@ balanceRouter.get("/saldo", getBalanceController);
 
 // Ruta para comprar un cupón
 
- balanceRouter.post("/comprar-cupon", buyCouponController);
+balanceRouter.post("/comprar-cupon", buyCouponController);
 
-// Otras rutas relacionadas con el saldo o compras de cupones pueden ir aquí
+// Ruta para tener informacion del usuario
+balanceRouter.get("/usuario", getUserController);

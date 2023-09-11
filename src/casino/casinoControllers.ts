@@ -73,3 +73,25 @@ export const buyCouponController = async (req: Request, res: Response) => {
     return res.status(500).json({ message: "Error interno del servidor" });
   }
 };
+export const getUserController = async (req: Request, res: Response) => {
+  // El middleware de autenticación ya ha verificado el token y adjuntado los datos del usuario en res.locals
+  // Puedes acceder a estos datos para obtener el ID del usuario autenticado
+  const userId = res.locals.userId;
+
+  try {
+    // Consulta la base de datos para obtener el usuario autenticado por su ID
+    const user = await prisma().usuario.findUnique({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      throw new Error("Usuario no encontrado");
+    }
+
+    // Devuelve el usuario autenticado en formato JSON
+    res.json({ usuario: user });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error al obtener el usuario" });
+  }
+};
