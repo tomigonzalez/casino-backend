@@ -3,8 +3,12 @@ import { getConfig } from "./src/config/config";
 import { createPrismaClient } from "./src/config/prismaClient";
 import { authRouter } from "./src/auth/authRouter";
 import { balanceRouter } from "./src/casino/casinoRoute";
+import { corsOptions } from "./src/middleware/corsMiddleware";
+import cors from "cors";
 
 const app = express();
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
