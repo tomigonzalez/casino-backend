@@ -16,7 +16,7 @@ export const loginController = async (req: Request, res: Response) => {
 export const registerController = async (req: Request, res: Response) => {
   const { email, password, name } = req.body;
   try {
-    const result = await register(email, password, name);
+    const result = await register(name, email, password);
     res.json(result);
     return;
   } catch (err) {
