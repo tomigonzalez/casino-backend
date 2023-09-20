@@ -40,16 +40,16 @@ const login = (email, password) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.login = login;
-const register = (email, password, name) => __awaiter(void 0, void 0, void 0, function* () {
+const register = (name, email, password) => __awaiter(void 0, void 0, void 0, function* () {
     // validar que el email no exista!
     const hash = yield bcrypt_1.default.hash(password, 10);
     try {
         const user = yield (0, prismaClient_1.prisma)().usuario.create({
             data: {
+                name: name,
                 email: email,
                 password: hash,
                 // Debes proporcionar un valor para todas las propiedades requeridas
-                name: name,
                 balance: 0.0, // Proporciona un saldo inicial
             },
         });

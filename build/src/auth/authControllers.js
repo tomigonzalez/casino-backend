@@ -25,9 +25,9 @@ const loginController = (req, res) => __awaiter(void 0, void 0, void 0, function
 });
 exports.loginController = loginController;
 const registerController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { email, password, name } = req.body;
+    const { name, email, password } = req.body;
     try {
-        const result = yield (0, authLogic_1.register)(email, password, name);
+        const result = yield (0, authLogic_1.register)(name, email, password);
         res.json(result);
         return;
     }
