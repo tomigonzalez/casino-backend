@@ -41,20 +41,19 @@ export const login = async (
 };
 
 export const register = async (
+  name: string,
   email: string,
-  password: string,
-  name: string
+  password: string
 ): Promise<any> => {
   // validar que el email no exista!
   const hash = await bcrypt.hash(password, 10);
   try {
     const user = await prisma().usuario.create({
       data: {
-        email: email,
         name: name, // Proporciona un nombre
+        email: email,
         password: hash,
         // Debes proporcionar un valor para todas las propiedades requeridas
-
         balance: 0.0, // Proporciona un saldo inicial
       },
     });

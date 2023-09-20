@@ -14,7 +14,7 @@ export const loginController = async (req: Request, res: Response) => {
 };
 
 export const registerController = async (req: Request, res: Response) => {
-  const { email, password, name } = req.body;
+  const { name, email, password } = req.body;
   try {
     const result = await register(name, email, password);
     res.json(result);
