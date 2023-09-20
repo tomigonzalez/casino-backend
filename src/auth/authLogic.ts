@@ -51,9 +51,10 @@ export const register = async (
     const user = await prisma().usuario.create({
       data: {
         email: email,
+        name: name, // Proporciona un nombre
         password: hash,
         // Debes proporcionar un valor para todas las propiedades requeridas
-        name: name, // Proporciona un nombre
+
         balance: 0.0, // Proporciona un saldo inicial
       },
     });
