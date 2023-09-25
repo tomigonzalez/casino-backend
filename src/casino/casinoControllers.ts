@@ -57,6 +57,7 @@ export const buyCouponController = async (req: Request, res: Response) => {
         // date y userts se llenarán automáticamente por Prisma
       },
     });
+    console.log("TRANSACTION: ", createdTransaction);
     // Actualiza el saldo del usuario en la base de datos
     const updatedUser = await prisma().usuario.update({
       where: { id: userId },
